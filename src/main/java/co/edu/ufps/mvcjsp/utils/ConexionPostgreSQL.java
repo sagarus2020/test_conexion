@@ -30,7 +30,22 @@ public class ConexionPostgreSQL {
 				e1.printStackTrace();
 			}
 
-
+			try {
+				Class.forName(driver).newInstance();
+				c = (Connection)DriverManager.getConnection(url,usuario,password);
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	public ResultSet consultar(String sql) {
 		try {
